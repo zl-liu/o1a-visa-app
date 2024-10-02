@@ -225,7 +225,7 @@ def generate_final_results_txt(evaluations, final_rating):
     if not os.path.exists(RESULTS_DIR):
         os.makedirs(RESULTS_DIR)
 
-    file_path = os.path.join(RESULTS_DIR, f"final_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt")
+    file_path = os.path.join(RESULTS_DIR, f"final_results.txt")
 
     with open(file_path, 'w') as file:
         file.write("O-1A Visa Assessment Results\n")
@@ -395,14 +395,14 @@ async def start():
 
     # Assuming results have been calculated already in another function
     evaluations = {  # Dummy evaluation data for testing
-        "Awards": "remarkable evidence",
-        "Membership": "reasonable evidence",
-        "Press": "weak evidence",
-        "Judging": "reasonable evidence",
-        "Original Contribution": "no evidence",
-        "Scholarly Articles": "remarkable evidence",
-        "Critical Employment": "reasonable evidence",
-        "High Remuneration": "no evidence"
+        "Awards": "",
+        "Membership": "",
+        "Press": "",
+        "Judging": "",
+        "Original Contribution": "",
+        "Scholarly Articles": "",
+        "Critical Employment": "",
+        "High Remuneration": ""
     }
 
     final_rating = determine_final_rating(evaluations)
