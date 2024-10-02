@@ -7,6 +7,9 @@ __pycache__/
 /chainlit.md
 /record_manager_cache.sql
 uploaded_pdfs/
+/old_my_cl_app.py
+/first_pass_results.csv
+/second_pass_results.csv
 
 
 

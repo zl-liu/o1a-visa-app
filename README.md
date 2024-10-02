@@ -5,6 +5,7 @@ This project is an automated tool that evaluates an applicant's likelihood of su
 ## Screenshots
 
 ![O-1A Visa Application Evaluator Screenshot1](app_screenshot1.png)
+![O-1A Visa Application Evaluator Screenshot4](app_screenshot6.png)
 ![O-1A Visa Application Evaluator Screenshot4](app_screenshot4.png)
 ![O-1A Visa Application Evaluator Screenshot4](app_screenshot5.png)
 
