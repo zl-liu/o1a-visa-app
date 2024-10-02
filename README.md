@@ -9,6 +9,10 @@ This project is an automated tool that evaluates an applicant's likelihood of su
 ![O-1A Visa Application Evaluator Screenshot4](app_screenshot4.png)
 ![O-1A Visa Application Evaluator Screenshot4](app_screenshot5.png)
 
+## Documentation
+
+For detailed information about the design choices and evaluation process, please refer to [O-1A Visa System Design](o1a-visa-system-design.md) document.
+
 ## Installation
 
 1. Clone the app repository:

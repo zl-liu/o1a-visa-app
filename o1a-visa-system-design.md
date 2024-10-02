@@ -77,6 +77,8 @@ This logic is inspired by USCIS's requirement that an O-1A visa applicant must s
 
 Additionally, government decision-making tends to favor categorical checks (i.e., confirming if three specific requirements are met) rather than applying a weighted sum. This informed our decision to prioritize categorical evidence over an arbitrary scoring system.
 
+4. Through Chainlit, we also implement a RAG system that retrieves supporting text chunks from the CV that are relevant to each O1-A qualification category. This helps guide the LLMs, and help attorneys and applicants review the automatic process.
+
 ## 3. Backend Design: FastAPI and Parallel Processing
 
 ### Backend Architecture (FastAPI):
@@ -91,13 +93,14 @@ Additionally, government decision-making tends to favor categorical checks (i.e.
 ## 4. How to Evaluate the System's Output
 
 ### Accuracy and Evaluation:
-The system's output can be evaluated based on the accuracy of both the extractor phase and the evaluator phase. Key points of evaluation include:
+The system's output can be manually evaluated based on the accuracy of both the extractor phase and the evaluator phase. Key points of evaluation include:
 - Correctness of extraction: Does the system correctly identify and extract all relevant details from the CV for each of the eight criteria?
 - Precision of evaluation: Does the system correctly assign the strength of evidence for each of the extracted pieces of information?
+- Does the final assessment, "Low", "Medium", and "High" makes sense to human experts?
 
 ### Improving Accuracy:
 - Accuracy can be improved by refining the LLM prompts used in both the extraction and evaluation phases.
-- The two-pass architecture ensures that errors in extraction do not bleed into evaluation and vice versa, which should improve the overall accuracy compared to a single-phase system.
+- Accuracy can be improved by fine-tuned or aligned (through RLHF) language models that are trained on relevant data where CVs are manually classified.
 
 ### Aggregation Evaluation:
 - The system's final output is a clear overall rating based on the USCIS requirement of three distinct categories.
