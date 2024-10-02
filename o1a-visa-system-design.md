@@ -7,18 +7,24 @@ This document outlines the reasoning behind the architectural and operational de
 In short, 
 
 - Phase 1: 8 extraction calls, 1 per category.
+
 - Phase 2: 8 evaluation calls, 1 per category
+
 - Phase 3: Aggregation and final assessment: Low, Medium or High. 
 
 Philosophy: Divide & Conquer. I personally choose this strategy based on past experience with detectors, extractors and evaluators. 
 
 -Front end: Chainlit -- allows intuitive upload and supplies a chat-based interface
+
 -Back end: FastAPI, handles the front end and calls to LLMs. 
+
 -Extra: RAG. It helps with grounding the LLMs and helping users understand evidence behind the LLMs' judgement. 
 
 Further improvements if I can work on this full-time:
 - Fine-tuned and RLHF-ed dedicated models
+
 - Tailored prompts
+
 - Better RAG (many things can be experimented)
 
 ## 2. Two-Phase System: Extractor and Evaluator
