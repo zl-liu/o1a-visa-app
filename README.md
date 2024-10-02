@@ -80,6 +80,8 @@ curl -X 'POST' \
 
 Replace `Zhengliang_Liu_Resume.pdf` with the path to your PDF file.
 
+Please note you can also use other programming languages to query this API endpoint.
+
 #### API Response
 
 The API will return a JSON object with the following structure:
