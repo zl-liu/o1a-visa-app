@@ -3,5 +3,7 @@
 .idea/
 .chainlit/
 .files/
+__pycache__/
+
 
 
