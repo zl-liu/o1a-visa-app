@@ -8,9 +8,9 @@ In short,
 
 - Phase 1: 8 extraction calls, 1 per category.
 
-- Phase 2: 8 evaluation calls, 1 per category
+- Phase 2: 8 evaluation calls, 1 per category. Phase 1 and Phase 2 are also guided by USCIS guidelines, "Appendix: Satisfying the O-1A Evidentiary Requirements"
 
-- Phase 3: Aggregation and final assessment: Low, Medium or High. 
+- Phase 3: Aggregation and final assessment: Low, Medium or High.
 
 Philosophy: Divide & Conquer. I personally choose this strategy based on past experience with detectors, extractors and evaluators. 
 
@@ -102,7 +102,22 @@ Additionally, government decision-making tends to favor categorical checks (i.e.
 
 4. Through Chainlit, we also implement a RAG system that retrieves supporting text chunks from the CV that are relevant to each O1-A qualification category. This helps guide the LLMs, and help attorneys and applicants review the automatic process.
 
-## 3. Backend Design: FastAPI and Parallel Processing
+## 3. USCIS Guidelines Integration
+
+To ensure that our system aligns with official USCIS requirements, we have incorporated the "Appendix: Satisfying the O-1A Evidentiary Requirements" from the USCIS Policy Manual (https://www.uscis.gov/policy-manual/volume-2-part-m#) into our `reference_sheet.csv` file.
+
+### Purpose of the Reference Sheet
+The `reference_sheet.csv` file serves as a crucial resource for both the Extractor and Evaluator phases. It contains detailed information about each of the eight O-1A criteria, including:
+
+1. Category name
+2. Official USCIS description
+3. Specific criteria and examples provided by USCIS
+
+### Integration in the System
+- **Extractor Phase**: The LLM uses the descriptions and criteria from the reference sheet to accurately identify and extract relevant information from the CV for each category.
+- **Evaluator Phase**: The LLM references the USCIS criteria to assess the strength of the extracted evidence, ensuring that the evaluation aligns with official USCIS standards.
+- 
+## 4. Backend Design: FastAPI and Parallel Processing
 
 ### Backend Architecture (FastAPI):
 - The backend is built using FastAPI to handle incoming requests. FastAPI is highly scalable, supports asynchronous requests, and is well-suited for handling parallel LLM calls.
@@ -113,7 +128,7 @@ Additionally, government decision-making tends to favor categorical checks (i.e.
 - The web-based interface gives real-time feedback to the user, showing when their CV has been processed and displaying the overall qualification result.
 - The Chainlit front end communicates with the FastAPI backend, sending the CV file, and receiving processed results and evaluation feedback.
 
-## 4. How to Evaluate the System's Output
+## 5. How to Evaluate the System's Output
 
 ### Accuracy and Evaluation:
 The system's output can be manually evaluated based on the accuracy of both the extractor phase and the evaluator phase. Key points of evaluation include:
