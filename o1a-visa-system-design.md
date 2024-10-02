@@ -25,7 +25,9 @@ Further improvements if I can work on this full-time:
 
 - Tailored prompts
 
-- Better RAG (many things can be experimented)
+- Better RAG (many things can be experimented). For example, sentence-level chunking or semantic chunking.
+
+- Better PDF parsing. There are many products and ideas in this domain.
 
 ## 2. Two-Phase System: Extractor and Evaluator
 
