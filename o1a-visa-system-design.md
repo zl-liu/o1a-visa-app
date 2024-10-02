@@ -4,6 +4,23 @@
 
 This document outlines the reasoning behind the architectural and operational design of a system that assesses O-1A visa qualifications based on an applicant's CV. The system is split into two distinct phases to ensure the accuracy and separation of concerns, allowing for modular, independent processing and evaluation. The backend architecture is designed to handle parallel processing and provide user-friendly interactions through a web-based interface.
 
+In short, 
+
+- Phase 1: 8 extraction calls, 1 per category.
+- Phase 2: 8 evaluation calls, 1 per category
+- Phase 3: Aggregation and final assessment: Low, Medium or High. 
+
+Philosophy: Divide & Conquer. I personally choose this strategy based on past experience with detectors, extractors and evaluators. 
+
+-Front end: Chainlit -- allows intuitive upload and supplies a chat-based interface
+-Back end: FastAPI, handles the front end and calls to LLMs. 
+-Extra: RAG. It helps with grounding the LLMs and helping users understand evidence behind the LLMs' judgement. 
+
+Further improvements if I can work on this full-time:
+- Fine-tuned and RLHF-ed dedicated models
+- Tailored prompts
+- Better RAG (many things can be experimented)
+
 ## 2. Two-Phase System: Extractor and Evaluator
 
 The system is built in two key phases:
