@@ -4,6 +4,9 @@
 .chainlit/
 .files/
 __pycache__/
+/chainlit.md
+/record_manager_cache.sql
+uploaded_pdfs/
 
 
 
