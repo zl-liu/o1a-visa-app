@@ -6,6 +6,7 @@ This project is an automated tool that evaluates an applicant's likelihood of su
 
 ![O-1A Visa Application Evaluator Screenshot1](app_screenshot1.png)
 ![O-1A Visa Application Evaluator Screenshot4](app_screenshot4.png)
+![O-1A Visa Application Evaluator Screenshot4](app_screenshot5.png)
 
 ## Installation
 
@@ -53,5 +54,3 @@ This project is an automated tool that evaluates an applicant's likelihood of su
 3. Wait for the system to process the file. After processing, the system will output the likelihood of success for the O-1A visa application as either [Low], [Medium], or [High].
 
 ## License
-
-This project is licensed under the MIT License.

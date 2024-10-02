@@ -213,6 +213,7 @@ RESULTS_DIR = "./results"
 # CSV reference file path
 REFERENCE_SHEET_PATH = "reference_sheet.csv"
 FIRST_PASS_RESULTS_PATH = "first_pass_results.csv"
+SECOND_PASS_RESULTS_PATH = "second_pass_results.csv"
 
 # FastAPI backend URL for processing PDF
 FASTAPI_BACKEND_URL = "http://localhost:8000/assess_o1a/"  # Make sure main.py is running on this URL
@@ -309,6 +310,17 @@ def load_first_pass_results():
     else:
         raise FileNotFoundError(f"File not found: {FIRST_PASS_RESULTS_PATH}")
 
+def load_second_pass_results():
+    """
+    Load the second pass results from a CSV file.
+    """
+    if os.path.exists(SECOND_PASS_RESULTS_PATH):
+        df = pd.read_csv(SECOND_PASS_RESULTS_PATH)
+        results = {row['Criterion']: row['Evaluation'] for _, row in df.iterrows()}
+        return results
+    else:
+        raise FileNotFoundError(f"File not found: {SECOND_PASS_RESULTS_PATH}")
+
 def process_uploaded_file(file: AskFileResponse):
     """
     Save the uploaded file to the local file system and process it using ChromaDB.
@@ -385,25 +397,17 @@ async def start():
     # Start the FastAPI process for extraction and evaluation in the background
     await call_fastapi_backend(file.path)
 
-    # Once backend processing is complete, load the first-pass results
+    # Once backend processing is complete, load the first and second pass results
     try:
         FIRST_PASS_RESULTS = load_first_pass_results()
+        SECOND_PASS_RESULTS = load_second_pass_results()
     except FileNotFoundError as e:
         msg.content = str(e)
         await msg.update()
         return
 
-    # Assuming results have been calculated already in another function
-    evaluations = {  # Dummy evaluation data for testing
-        "Awards": "",
-        "Membership": "",
-        "Press": "",
-        "Judging": "",
-        "Original Contribution": "",
-        "Scholarly Articles": "",
-        "Critical Employment": "",
-        "High Remuneration": ""
-    }
+    # Use second pass results for the evaluations
+    evaluations = SECOND_PASS_RESULTS
 
     final_rating = determine_final_rating(evaluations)
     result_file = generate_final_results_txt(evaluations, final_rating)
